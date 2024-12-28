@@ -32,10 +32,12 @@ public class TransactionEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // 구매자
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private MemberEntity memberEntity;
+    @JoinColumn(name = "buyer_id")
+    private MemberEntity buyerEntity;
 
+    // 제품
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private ProductEntity productEntity;
