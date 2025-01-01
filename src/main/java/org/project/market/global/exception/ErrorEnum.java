@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
-public enum ErrorEnum implements ErrorCode {
+public enum ErrorEnum {
 
     // 4xx Client Errors
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "E400", "Bad Request"),
@@ -28,8 +28,14 @@ public enum ErrorEnum implements ErrorCode {
     RANGE_NOT_SATISFIABLE(HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE, "E416", "Range Not Satisfiable"),
     EXPECTATION_FAILED(HttpStatus.EXPECTATION_FAILED, "E417", "Expectation Failed"),
     IM_A_TEAPOT(HttpStatus.I_AM_A_TEAPOT, "E418", "I'm a teapot"),
-    UNPROCESSABLE_ENTITY(HttpStatus.UNPROCESSABLE_ENTITY, "E422", "Validation failed"),
-    DUPLICATE(HttpStatus.BAD_REQUEST, "E423", "Duplicated"),
+    UNPROCESSABLE_ENTITY(HttpStatus.UNPROCESSABLE_ENTITY, "E422", "Unprocessable Entity"),
+    LOCKED(HttpStatus.LOCKED, "E423", "Locked"),
+    FAILED_DEPENDENCY(HttpStatus.FAILED_DEPENDENCY, "E424", "Failed Dependency"),
+    UPGRADE_REQUIRED(HttpStatus.UPGRADE_REQUIRED, "E426", "Upgrade Required"),
+    PRECONDITION_REQUIRED(HttpStatus.PRECONDITION_REQUIRED, "E428", "Precondition Required"),
+    TOO_MANY_REQUESTS(HttpStatus.TOO_MANY_REQUESTS, "E429", "Too Many Requests"),
+    REQUEST_HEADER_FIELDS_TOO_LARGE(HttpStatus.REQUEST_HEADER_FIELDS_TOO_LARGE, "E431", "Request Header Fields Too Large"),
+    UNAVAILABLE_FOR_LEGAL_REASONS(HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS, "E451", "Unavailable For Legal Reasons"),
 
     // 5xx Server Errors
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E500", "Internal Server Error"),
@@ -48,4 +54,5 @@ public enum ErrorEnum implements ErrorCode {
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
+
 }
