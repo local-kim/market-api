@@ -1,14 +1,16 @@
-package org.project.market.global.exception;
+package org.project.market.global.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
-@AllArgsConstructor
 public class ErrorResponse {
 
+    // 에러 코드
     private String code;
+
+    // 에러 메세지
     private String message;
+
 }
