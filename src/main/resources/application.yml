@@ -13,6 +13,10 @@ spring:
         format_sql: true
         auto_quote_keyword: true
 
+jwt:
+  expiration_time: 86400000
+  secret_key: wXVmY9q+3FgDjsKqP7C8F8zJ5bQx9sd9vpl9xAyj/B0=
+
 logging:
   level:
     root: info
