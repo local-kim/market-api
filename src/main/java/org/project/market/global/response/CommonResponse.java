@@ -43,6 +43,10 @@ public class CommonResponse<T> {
             .build();
     }
 
+    public static <T> CommonResponse<T> fail(ErrorResponse error) {
+        return fail(null, error);
+    }
+
     private enum Status {
         SUCCESS, FAIL
     }

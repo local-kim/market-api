@@ -1,5 +1,6 @@
 package org.project.market.global.response;
 
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,6 +12,6 @@ public class ErrorResponse {
     private String code;
 
     // 에러 메세지
-    private String message;
+    private List<String> message;
 
 }
