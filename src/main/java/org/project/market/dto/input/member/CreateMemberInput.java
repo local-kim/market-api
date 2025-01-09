@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Getter
 @Setter
-public class SignUpInput {
+public class CreateMemberInput {
 
     private String email;
 

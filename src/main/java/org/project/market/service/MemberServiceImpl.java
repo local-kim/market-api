@@ -1,7 +1,7 @@
 package org.project.market.service;
 
 import lombok.RequiredArgsConstructor;
-import org.project.market.dto.input.member.SignUpInput;
+import org.project.market.dto.input.member.CreateMemberInput;
 import org.project.market.entity.MemberEntity;
 import org.project.market.global.exception.CustomException;
 import org.project.market.global.exception.ErrorEnum;
@@ -17,13 +17,13 @@ public class MemberServiceImpl implements MemberService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public void signUp(SignUpInput signUpInput) {
+    public void createMember(CreateMemberInput createMemberInput) {
         // 이메일 중복 체크
-        if(memberRepository.findByEmail(signUpInput.getEmail()).isPresent()) {
+        if(memberRepository.findByEmail(createMemberInput.getEmail()).isPresent()) {
             throw new CustomException(ErrorEnum.EMAIL_ALREADY_EXISTS, null);
         }
 
-        MemberEntity memberEntity = signUpInput.toMemberEntity(passwordEncoder);
+        MemberEntity memberEntity = createMemberInput.toMemberEntity(passwordEncoder);
 
         memberRepository.save(memberEntity);
     }
