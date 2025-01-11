@@ -12,4 +12,8 @@ public class CustomException extends RuntimeException {
         this.errorEnum = errorEnum;
     }
 
+    public CustomException(ErrorEnum errorEnum) {
+        this.errorEnum = errorEnum;
+    }
+
 }

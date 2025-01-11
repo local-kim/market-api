@@ -51,7 +51,7 @@ class MemberControllerTest {
             mockMvc.perform(post("/api/member/signup")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
-                // then
+            // then
                 .andExpect(status().isCreated())
                 .andDo(print());
         }
@@ -69,7 +69,7 @@ class MemberControllerTest {
             mockMvc.perform(post("/api/member/signup")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
-                // then
+            // then
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error.code").value(ErrorEnum.INVALID_FORMAT.name()))
                 .andDo(print());
@@ -95,7 +95,7 @@ class MemberControllerTest {
             mockMvc.perform(post("/api/member/signup")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
-                // then
+            // then
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error.code").value(ErrorEnum.EMAIL_ALREADY_EXISTS.name()))
                 .andDo(print());

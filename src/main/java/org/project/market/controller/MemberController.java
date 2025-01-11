@@ -33,10 +33,10 @@ public class MemberController {
     })
     @Operation(summary = "회원가입", description = "비밀번호: 8~16자의 영문, 숫자, 특수문자를 1개 이상 포함한 문자열")
     @PostMapping("/signup")
-    public ResponseEntity<?> createMember(@Valid @RequestBody CreateMemberRequest createMemberRequest) {
-        CreateMemberInput createMemberInput = memberMapper.toInput(createMemberRequest);
+    public ResponseEntity<?> createMember(@Valid @RequestBody CreateMemberRequest request) {
+        CreateMemberInput input = memberMapper.toInput(request);
 
-        memberService.createMember(createMemberInput);
+        memberService.createMember(input);
 
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(CommonResponse.success("회원가입 성공"));

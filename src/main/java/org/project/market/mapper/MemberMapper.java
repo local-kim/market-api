@@ -7,6 +7,6 @@ import org.project.market.dto.request.member.CreateMemberRequest;
 @Mapper(componentModel = "spring")
 public interface MemberMapper {
 
-    CreateMemberInput toInput(CreateMemberRequest createMemberRequest);
+    CreateMemberInput toInput(CreateMemberRequest request);
 
 }
