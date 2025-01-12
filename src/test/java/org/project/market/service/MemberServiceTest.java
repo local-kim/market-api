@@ -38,11 +38,11 @@ class MemberServiceTest {
 
     @DisplayName("회원가입 메서드")
     @Nested
-    class CreateMember {
+    class CreateMemberTest {
 
-        @DisplayName("이메일이 존재하지 않으면 회원을 저장함")
+        @DisplayName("회원가입 성공")
         @Test
-        void shouldCreateMember_whenEmailDoesNotExist() {
+        void shouldCreateMember_whenSuccessful() {
             // given
             CreateMemberInput input = CreateMemberInput.builder()
                 .email("test-market@domain.com")
@@ -62,7 +62,7 @@ class MemberServiceTest {
             verify(memberRepository).save(any(MemberEntity.class));
         }
 
-        @DisplayName("이메일이 이미 존재하면 예외를 던짐")
+        @DisplayName("이미 가입된 이메일이면 예외를 던짐")
         @Test
         void shouldThrowException_whenEmailAlreadyExists() {
             // given
@@ -87,7 +87,5 @@ class MemberServiceTest {
             assertEquals(ErrorEnum.EMAIL_ALREADY_EXISTS, exception.getErrorEnum());
             verify(memberRepository, never()).save(any(MemberEntity.class));
         }
-
     }
-
 }

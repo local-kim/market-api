@@ -50,5 +50,4 @@ public class CommonResponse<T> {
     private enum Status {
         SUCCESS, FAIL
     }
-
 }

@@ -98,5 +98,4 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(ErrorEnum.INTERNAL_SERVER_ERROR.getHttpStatus())
             .body(CommonResponse.fail(e.getMessage(), errorResponse));
     }
-
 }

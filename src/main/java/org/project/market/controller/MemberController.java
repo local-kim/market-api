@@ -41,5 +41,4 @@ public class MemberController {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(CommonResponse.success("회원가입 성공"));
     }
-
 }

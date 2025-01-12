@@ -21,5 +21,4 @@ public class CreateMemberInput {
             .password(passwordEncoder.encode(password))
             .build();
     }
-
 }

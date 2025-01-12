@@ -36,11 +36,11 @@ class MemberControllerTest {
 
     @DisplayName("회원가입 API")
     @Nested
-    class CreateMember {
+    class CreateMemberTest {
 
         @DisplayName("성공")
         @Test
-        void shouldReturnsCreated_whenValidRequest() throws Exception {
+        void shouldReturnsCreated_whenSuccessful() throws Exception {
             // given
             CreateMemberRequest request = CreateMemberRequest.builder()
                 .email("test-market@domain.com")
@@ -100,7 +100,5 @@ class MemberControllerTest {
                 .andExpect(jsonPath("$.error.code").value(ErrorEnum.EMAIL_ALREADY_EXISTS.name()))
                 .andDo(print());
         }
-
     }
-
 }

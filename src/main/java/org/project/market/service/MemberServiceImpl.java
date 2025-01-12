@@ -29,5 +29,4 @@ public class MemberServiceImpl implements MemberService {
 
         memberRepository.save(memberEntity);
     }
-
 }

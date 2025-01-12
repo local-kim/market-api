@@ -15,5 +15,4 @@ public class CustomException extends RuntimeException {
     public CustomException(ErrorEnum errorEnum) {
         this.errorEnum = errorEnum;
     }
-
 }
