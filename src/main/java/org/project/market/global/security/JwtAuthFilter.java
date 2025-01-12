@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -20,33 +21,29 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-        throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authorizationHeader = request.getHeader("Authorization");
 
         // JWT가 헤더에 있는 경우
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+        if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             String token = authorizationHeader.substring(7);
 
             // JWT 유효성 검증
-            if (jwtUtil.validateToken(token)) {
+            if(jwtUtil.validateToken(token)) {
                 String email = jwtUtil.getEmailFromToken(token);
 
-                // 유저와 토큰 일치 시 userDetails 생성
+                // 유저 존재 시 userDetails 생성
                 UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
 
-                if (userDetails != null) {
-                    // UserDetails, Password, Role -> 접근권한 인증 Token 생성
-                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                // UserDetails, Role -> 인증 객체 생성
+                Authentication authentication = new UsernamePasswordAuthenticationToken(
+                    userDetails, null, userDetails.getAuthorities());
 
-                    // 현재 Request의 Security Context에 접근권한 설정
-                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-                }
+                // Request의 Security Context에 인증 정보 저장
+                SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
 
         filterChain.doFilter(request, response); // 다음 필터로 넘기기
     }
-
 }

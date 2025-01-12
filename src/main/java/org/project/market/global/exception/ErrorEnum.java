@@ -10,7 +10,7 @@ public enum ErrorEnum {
 
     // 4xx Client Errors
     EMAIL_ALREADY_EXISTS(HttpStatus.BAD_REQUEST, "이미 가입된 이메일입니다."),
-    NOT_FOUND(HttpStatus.NOT_FOUND, "리소스를 찾을 수 없습니다."),
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 회원입니다."),
     INVALID_FORMAT(HttpStatus.BAD_REQUEST, "잘못된 입력 형식입니다."),
 
     // 5xx Server Errors

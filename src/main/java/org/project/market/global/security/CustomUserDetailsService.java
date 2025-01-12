@@ -21,9 +21,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MemberEntity memberEntity = memberRepository.findByEmail(username)
-            .orElseThrow(() -> new CustomException(ErrorEnum.NOT_FOUND, "존재하지 않는 회원입니다."));
+            .orElseThrow(() -> new CustomException(ErrorEnum.USER_NOT_FOUND));
 
         return new CustomUserDetail(memberEntity);
     }
-
 }
