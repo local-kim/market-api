@@ -1,4 +1,4 @@
-package org.project.market.global.security;
+package org.project.market.util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -45,7 +45,7 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token);
             return true;
-        } catch (Exception e) {
+        } catch(Exception e) {
             return false;
         }
     }

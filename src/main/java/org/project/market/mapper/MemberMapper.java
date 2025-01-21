@@ -8,5 +8,4 @@ import org.project.market.dto.request.member.CreateMemberRequest;
 public interface MemberMapper {
 
     CreateMemberInput toInput(CreateMemberRequest request);
-
 }

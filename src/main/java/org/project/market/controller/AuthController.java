@@ -10,7 +10,7 @@ import org.project.market.dto.input.auth.LoginInput;
 import org.project.market.dto.request.auth.LoginRequest;
 import org.project.market.global.response.CommonResponse;
 import org.project.market.mapper.AuthMapper;
-import org.project.market.service.AuthService;
+import org.project.market.service.auth.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

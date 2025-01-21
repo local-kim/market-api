@@ -13,5 +13,4 @@ public class ErrorResponse {
 
     // 에러 메세지
     private List<String> message;
-
 }

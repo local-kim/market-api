@@ -24,5 +24,4 @@ public class CreateMemberRequest {
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[~!@#$%^&*\\-_+=;:,.?]).*$", message = "영문, 숫자, 특수문자를 1개 이상 포함해야합니다")
     @Schema(description = "비밀번호", example = "password1!")
     private String password;
-
 }

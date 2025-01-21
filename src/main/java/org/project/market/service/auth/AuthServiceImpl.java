@@ -1,10 +1,10 @@
-package org.project.market.service;
+package org.project.market.service.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.project.market.dto.input.auth.LoginInput;
 import org.project.market.global.exception.CustomException;
 import org.project.market.global.exception.ErrorEnum;
-import org.project.market.global.security.JwtUtil;
+import org.project.market.util.JwtUtil;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;

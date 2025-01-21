@@ -33,5 +33,4 @@ public class MemberEntity extends BaseEntity {
 
     // 비밀번호
     private String password;
-
 }

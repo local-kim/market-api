@@ -10,7 +10,7 @@ import org.project.market.dto.input.member.CreateMemberInput;
 import org.project.market.dto.request.member.CreateMemberRequest;
 import org.project.market.global.response.CommonResponse;
 import org.project.market.mapper.MemberMapper;
-import org.project.market.service.MemberService;
+import org.project.market.service.member.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

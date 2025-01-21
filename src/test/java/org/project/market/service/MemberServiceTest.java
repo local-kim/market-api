@@ -21,6 +21,7 @@ import org.project.market.entity.MemberEntity;
 import org.project.market.global.exception.CustomException;
 import org.project.market.global.exception.ErrorEnum;
 import org.project.market.repository.MemberRepository;
+import org.project.market.service.member.MemberServiceImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

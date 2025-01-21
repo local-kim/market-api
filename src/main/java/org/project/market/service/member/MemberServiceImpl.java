@@ -1,4 +1,4 @@
-package org.project.market.service;
+package org.project.market.service.member;
 
 import lombok.RequiredArgsConstructor;
 import org.project.market.dto.input.member.CreateMemberInput;

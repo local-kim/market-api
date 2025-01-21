@@ -8,5 +8,4 @@ import org.project.market.dto.request.auth.LoginRequest;
 public interface AuthMapper {
 
     LoginInput toInput(LoginRequest request);
-
 }
