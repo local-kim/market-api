@@ -28,4 +28,8 @@ public class CustomUserDetail implements UserDetails {
     public String getUsername() {
         return memberEntity.getEmail();
     }
+
+    public MemberEntity getMemberEntity() {
+        return memberEntity;
+    }
 }

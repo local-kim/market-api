@@ -1,37 +1,33 @@
 CREATE TABLE `member` (
-    `id`	INT NOT NULL    AUTO_INCREMENT,
-    `email` VARCHAR(255)	NULL    UNIQUE,
-    `password`	VARCHAR(255)	NULL,
+    `id`	INT NOT NULL    AUTO_INCREMENT  PRIMARY KEY,
+    `email` VARCHAR(255)	NOT NULL    UNIQUE,
+    `password`	VARCHAR(255)	NOT NULL,
     `created_at`	TIMESTAMP	NOT NULL	DEFAULT NOW(),
-    `updated_at`	TIMESTAMP	NOT NULL	DEFAULT NOW(),
-
-    PRIMARY KEY (id)
+    `updated_at`	TIMESTAMP	NOT NULL	DEFAULT NOW()   ON UPDATE NOW()
 );
 
 CREATE TABLE `product` (
-    `id`	INT NOT NULL    AUTO_INCREMENT,
+    `id`	INT NOT NULL    AUTO_INCREMENT  PRIMARY KEY,
     `seller_id`	INT NOT NULL,
-    `name`	VARCHAR(255)	NULL,
-    `price` BIGINT	NULL,
-    `status`	VARCHAR(255)	NULL	COMMENT '판매중, 예약중, 완료',
-    `quantity`	INT	NULL,
-    `stock`	INT NULL,
-    `created_at`	TIMESTAMP	NOT NULL,
-    `updated_at`	TIMESTAMP	NOT NULL,
-
-    PRIMARY KEY (id)
+    `name`	VARCHAR(255)	NOT NULL,
+    `description`   VARCHAR(255)    NULL,
+    `price` BIGINT	NOT NULL,
+    `status`	VARCHAR(255)	NOT NULL	COMMENT '판매중, 예약중, 완료',
+    `quantity`	INT	NOT NULL,
+    `stock`	INT NOT NULL,
+    `image_urls`    JSON    NULL,
+    `created_at`	TIMESTAMP	NOT NULL    DEFAULT NOW(),
+    `updated_at`	TIMESTAMP	NOT NULL    DEFAULT NOW()    ON UPDATE NOW()
 );
 
 CREATE TABLE `transaction` (
-    `id`    INT	NOT NULL    AUTO_INCREMENT,
+    `id`    INT	NOT NULL    AUTO_INCREMENT  PRIMARY KEY,
     `buyer_id`	INT NOT NULL,
     `product_id`	INT	NOT NULL,
-    `status`	VARCHAR(255)	NULL	COMMENT '거래중, 판매승인, 구매확정',
-    `price` BIGINT	NULL,
+    `status`	VARCHAR(255)	NOT NULL	COMMENT '확인중, 판매승인, 구매확정',
+    `price` BIGINT	NOT NULL,
     `created_at`	TIMESTAMP	NOT NULL	DEFAULT NOW(),
-    `updated_at`	TIMESTAMP	NOT NULL	DEFAULT NOW(),
-
-    PRIMARY KEY (id)
+    `updated_at`	TIMESTAMP	NOT NULL	DEFAULT NOW()   ON UPDATE NOW()
 );
 
 -- Foreign Key

@@ -13,5 +13,4 @@ public enum ProductStatusEnum {
     ;
 
     private final String value;
-
 }

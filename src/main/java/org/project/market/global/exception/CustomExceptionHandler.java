@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -76,6 +77,8 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
 
             body = CommonResponse.fail(error);
+
+            log.warn("[{}] {}", statusCode.toString().split(" ")[1], errorResponse.getBody().getDetail());
         }
 
         if (statusCode.equals(HttpStatus.INTERNAL_SERVER_ERROR) && body == null) {
@@ -83,6 +86,20 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         }
 
         return this.createResponseEntity(body, headers, statusCode, request);
+    }
+
+    // Spring Security Filter 예외
+    @ExceptionHandler(value = AuthorizationDeniedException.class)
+    public ResponseEntity<CommonResponse<ErrorResponse>> handleAuthorizationDeniedException(AuthorizationDeniedException e) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
+            .code(ErrorEnum.AUTHORIZATION_FAILED.name())
+            .message(List.of(ErrorEnum.AUTHORIZATION_FAILED.getMessage()))
+            .build();
+
+        log.warn("[{}] {}", ErrorEnum.AUTHORIZATION_FAILED.name(), ErrorEnum.AUTHORIZATION_FAILED.getMessage());
+
+        return ResponseEntity.status(ErrorEnum.AUTHORIZATION_FAILED.getHttpStatus())
+            .body(CommonResponse.fail(errorResponse));
     }
 
     // 그 밖의 예외
@@ -96,6 +113,6 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("[{}] {}", ErrorEnum.INTERNAL_SERVER_ERROR.name(), ErrorEnum.INTERNAL_SERVER_ERROR.getMessage(), e);
 
         return ResponseEntity.status(ErrorEnum.INTERNAL_SERVER_ERROR.getHttpStatus())
-            .body(CommonResponse.fail(e.getMessage(), errorResponse));
+            .body(CommonResponse.fail(errorResponse));
     }
 }
