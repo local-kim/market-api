@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/market
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        auto_quote_keyword: true
+
+jwt:
+  expiration_time: 86400000
+  secret_key: wXVmY9q+3FgDjsKqP7C8F8zJ5bQx9sd9vpl9xAyj/B0=
+
+cloud:
+  aws:
+    s3:
+      bucket: YOUR_BUCKET_NAME
+    stack:
+      auto: false
+    region:
+      static: YOUR_REGION
+    credentials:
+      access-key: YOUR_ACCESS_KEY
+      secret-key: YOUR_SECRET_KEY
+
+logging:
+  level:
+    root: info

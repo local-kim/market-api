@@ -1,4 +1,14 @@
 services:
+  springboot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: springboot
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
 
   mysql:
     image: mysql:latest
@@ -13,6 +23,16 @@ services:
       - mysql-data:/var/lib/mysql
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
 volumes:
   mysql-data:
+    driver: local
+  redis-data:
     driver: local
