@@ -1,11 +1,15 @@
 # market-api
 > Spring Boot 기반의 간단한 REST API 서버
 
+<br>
+
 ## 기술 스택
 - Java 17, Spring Boot 3.4.1, Gradle 8.11.1
 - Spring Security, JWT
 - MySQL, Redis
 - AWS S3
+
+<br>
 
 ## 로컬에서 테스트하기
 ### 프로젝트 클론
@@ -25,6 +29,8 @@ cd market-api
 ```
 docker compose up --build -d
 ```
+
+<br>
 
 ## API 문서
 ```
