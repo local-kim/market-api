@@ -6,6 +6,7 @@
 ## 기술 스택
 - Java 17, Spring Boot 3.4.1, Gradle 8.11.1
 - Spring Security, JWT
+- JPA
 - MySQL, Redis
 - AWS S3
 
